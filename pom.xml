@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<name>Boston Big Player</name>
 	<modules>
-		<module>BBP-core</module>
+		<module>Coach</module>
 		<module>RedSox</module>
 		<module>Bruins</module>
 		<module>Patriots</module>

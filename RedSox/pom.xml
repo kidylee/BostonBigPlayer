@@ -10,7 +10,7 @@
   <dependencies>
   	<dependency>
   		<groupId>com.kidylee</groupId>
-  		<artifactId>BBP-core</artifactId>
+  		<artifactId>Coach</artifactId>
   		<version>${project.version}</version>
   	</dependency>
   </dependencies>
