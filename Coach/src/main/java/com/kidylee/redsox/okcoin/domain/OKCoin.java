@@ -1,4 +1,6 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
+
+import static com.kidylee.redsox.okcoin.domain.Channel.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import static com.kidylee.RedSox.OKCoin.domain.Channel.*;
 import com.google.gson.Gson;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketException;

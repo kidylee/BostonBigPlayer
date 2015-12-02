@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 import javax.annotation.Generated;
 
@@ -15,12 +15,20 @@ public class FutureTickerResponse {
 
 	@SerializedName("channel")
 	@Expose
-	public Channel channel;
+	private Channel channel;
 	@SerializedName("data")
 	@Expose
-	public FutureTicker futureTicker;
+	private FutureTicker futureTicker;
 
-	static Gson gson = new Gson();
+	public FutureTicker getFutureTicker() {
+		return futureTicker;
+	}
+
+	public void setFutureTicker(FutureTicker futureTicker) {
+		this.futureTicker = futureTicker;
+	}
+
+	private static Gson gson = new Gson();
 	
 	static public FutureTickerResponse toFutureTickerResponse(JsonElement okcoinResponse){
 		

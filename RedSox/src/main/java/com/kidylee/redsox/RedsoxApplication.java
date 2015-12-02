@@ -1,4 +1,4 @@
-package com.kidylee.RedSox;
+package com.kidylee.redsox;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.kidylee.RedSox.OKCoin.domain.OKCoin;
+import com.kidylee.redsox.okcoin.domain.OKCoin;
 
 @SpringBootApplication
 public class RedsoxApplication {
@@ -20,7 +20,6 @@ public class RedsoxApplication {
         try {
 			latch.await();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

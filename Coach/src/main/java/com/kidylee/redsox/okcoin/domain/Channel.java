@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 public enum Channel {
 	ok_btcusd_future_ticker_this_week,

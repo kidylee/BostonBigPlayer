@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 public class OKCoinRequest {
 

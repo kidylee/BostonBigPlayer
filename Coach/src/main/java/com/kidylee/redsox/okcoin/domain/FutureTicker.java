@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 import java.util.Date;
 
@@ -56,9 +56,6 @@ public class FutureTicker {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
 	}
 
-	public void persist() {
-		// TODO Auto-generated method stub
 
-	}
 
 }

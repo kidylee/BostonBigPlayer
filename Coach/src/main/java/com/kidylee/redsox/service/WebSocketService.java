@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.service;
+package com.kidylee.redsox.service;
 
 public class WebSocketService {
 	

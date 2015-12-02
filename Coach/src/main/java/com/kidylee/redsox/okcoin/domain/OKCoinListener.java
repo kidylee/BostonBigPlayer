@@ -1,4 +1,4 @@
-package com.kidylee.RedSox.OKCoin.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.kidylee.RedSox.OKCoin.Repository.FutureTickerRepository;
+import com.kidylee.redsox.okcoin.repository.FutureTickerRepository;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketException;
 import com.neovisionaries.ws.client.WebSocketFrame;
@@ -106,7 +106,7 @@ public class OKCoinListener implements WebSocketListener{
 		    JsonArray array = parser.parse(text).getAsJsonArray();
 		    for(JsonElement el : array){
 		    	
-		    	FutureTicker t = FutureTickerResponse.toFutureTickerResponse(el).futureTicker;
+		    	FutureTicker t = FutureTickerResponse.toFutureTickerResponse(el).getFutureTicker();
 		    	repostory.save(t);
 		    }
 		}catch(Exception e){
