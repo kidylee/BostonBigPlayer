@@ -13,6 +13,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.aeonbits.owner</groupId>
+			<artifactId>owner</artifactId>
+			<version>1.0.9</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -28,7 +28,7 @@ public class OKCoinListener implements WebSocketListener{
 	
 	@Override
 	public void onStateChanged(WebSocket websocket, WebSocketState newState) throws Exception {
-		log.info("Websocket status changed: {} ", newState);
+		log.debug("Websocket status changed: {} ", newState);
 
 		
 	}
@@ -41,7 +41,7 @@ public class OKCoinListener implements WebSocketListener{
 
 	@Override
 	public void onConnectError(WebSocket websocket, WebSocketException cause) throws Exception {
-		log.info("Websocket onConnectError ", cause);
+		log.error("Websocket onConnectError ", cause);
 		
 	}
 
@@ -54,43 +54,43 @@ public class OKCoinListener implements WebSocketListener{
 
 	@Override
 	public void onFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onContinuationFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onTextFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onBinaryFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onCloseFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onPingFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void onPongFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

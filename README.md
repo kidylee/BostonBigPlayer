@@ -1,7 +1,7 @@
 #Boston Big Player - 波士顿高玩
 [![Build Status](https://travis-ci.org/kidylee/BostonBigPlayer.svg?branch=master)](https://travis-ci.org/kidylee/BostonBigPlayer) [![Codacy Badge](https://api.codacy.com/project/badge/grade/42a0d576c0dd4243ad425560246c95bd)](https://www.codacy.com/app/kidylee/BostonBigPlayer) 
 
-Boston Big Player is a strategy trading system which can making money when you laying on the bed. 
+Boston Big Player is a strategy trading system which makes money when you are laying on the bed. 
 
 ##Components:
 <img src="http://content.sportslogos.net/logos/7/151/full/y71myf8mlwlk8lbgagh3fd5e0.gif" width="64">
@@ -9,8 +9,9 @@ Boston Big Player is a strategy trading system which can making money when you l
  - [ ] UI Staff.
 
 <img src="http://content.sportslogos.net/logos/53/53/full/671.png" width="64">
- - [ ] Market data sources adapter.
  - [ ] Running standalone for persist market data for historical usage.
+ - [ ] Add new resource without restart.
+ - [ ] Market data sources.
  - [ ] Market event driver.
  - [ ] Historical data replay.
 

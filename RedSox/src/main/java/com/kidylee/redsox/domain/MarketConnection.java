@@ -1,11 +1,23 @@
 package com.kidylee.redsox.domain;
 
+import com.kidylee.coach.domain.Market;
+
 public interface MarketConnection {
 
-	MarketConnection websocket();
+	MarketConnection startWebSocket();
 
 	MarketConnection subscribe();
 
-	MarketConnection register();
+	MarketConnection registerListener();
+
+	MarketConnection connection();
+
+	void startRest();
+
+	Market getMarket();
+
+	void disconnectWebsocket();
+
+	void heartBeat();
 
 }
