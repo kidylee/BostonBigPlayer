@@ -8,12 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.eventbus.EventBus;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.kidylee.redsox.okcoin.domain.FutureTicker;
-import com.kidylee.redsox.okcoin.domain.FutureTickerResponse;
-import com.kidylee.redsox.okcoin.domain.OKCoinListener;
 import com.kidylee.redsox.okcoin.repository.FutureTickerRepository;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketException;
@@ -42,7 +36,7 @@ public abstract class BaseListener implements WebSocketListener{
 		
 	}
 
-	public void onException() {
+	private void onException() {
 		connectionManagerEventBus.post(conn);
 	}
 	
@@ -81,97 +75,82 @@ public abstract class BaseListener implements WebSocketListener{
 
 	@Override
 	public void onFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on frame: {} ", frame);
 		
 	}
 
 	@Override
 	public void onContinuationFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on Continuation Frame: {} ", frame);
 		
 	}
 
 	@Override
 	public void onTextFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on Continuation Frame: {} ", frame);
 		
 	}
 
 	@Override
 	public void onBinaryFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on binary Frame: {} ", frame);
+
 		
 	}
 
 	@Override
 	public void onCloseFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on Close Frame: {} ", frame);
+
 		
 	}
 
 	@Override
 	public void onPingFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on Ping Frame: {} ", frame);
+
 		
 	}
 
 	@Override
 	public void onPongFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		
+		log.debug("Websocket on Pong Frame: {} ", frame);
+
 		
 	}
 
 	@Override
-	public void onTextMessage(WebSocket websocket, String text) throws Exception {
-		try{
-			log.debug(text);
-			
-			if("{\"event\":\"pong\"}".equals(text))
-				return;
-			
-			JsonParser parser = new JsonParser();
-		    JsonArray array = parser.parse(text).getAsJsonArray();
-		    for(JsonElement el : array){
-		    	
-		    	FutureTicker t = FutureTickerResponse.toFutureTickerResponse(el).getFutureTicker();
-		    	repostory.save(t);
-		    }
-		}catch(Exception e){
-			log.error("Websocket listener onTextMessage error: ",e);
-		}
-		
-	    	
-	    
-		
-	}
+	abstract public void onTextMessage(WebSocket websocket, String text) throws Exception;
 
 	@Override
 	public void onBinaryMessage(WebSocket websocket, byte[] binary) throws Exception {
-		// TODO Auto-generated method stub
+		log.debug("Websocket on binary message: {} ", binary);
 		
 	}
 
 	@Override
 	public void onFrameSent(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		log.debug("Websocket on frame sent: {} ", frame);
 		
 	}
 
 	@Override
 	public void onFrameUnsent(WebSocket websocket, WebSocketFrame frame) throws Exception {
-		// TODO Auto-generated method stub
+		log.debug("Websocket on frame unsent: {} ", frame);
 		
 	}
 
 	@Override
 	public void onError(WebSocket websocket, WebSocketException cause) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
 	@Override
 	public void onFrameError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
@@ -179,30 +158,35 @@ public abstract class BaseListener implements WebSocketListener{
 	public void onMessageError(WebSocket websocket, WebSocketException cause, List<WebSocketFrame> frames)
 			throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
 	@Override
 	public void onTextMessageError(WebSocket websocket, WebSocketException cause, byte[] data) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
 	@Override
 	public void onSendError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
 	@Override
 	public void onUnexpectedError(WebSocket websocket, WebSocketException cause) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 
 	@Override
 	public void handleCallbackError(WebSocket websocket, Throwable cause) throws Exception {
 		log.error("Websocket get error: ", cause);
+		onException();
 		
 	}
 

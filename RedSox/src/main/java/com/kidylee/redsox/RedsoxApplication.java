@@ -11,16 +11,15 @@ import com.kidylee.redsox.okcoin.domain.OKCoin;
 @SpringBootApplication
 public class RedsoxApplication {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(RedsoxApplication.class, args);
-        OKCoin coin = context.getBean(OKCoin.class);
-        coin.init();
-        
-        CountDownLatch latch = new CountDownLatch(1);
-        try {
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(RedsoxApplication.class, args);
+		OKCoin coin = context.getBean(OKCoin.class);
+
+		CountDownLatch latch = new CountDownLatch(1);
+		try {
 			latch.await();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 }

@@ -1,4 +1,4 @@
-package com.kidylee.redsox.domain;
+package com.kidylee.redsox.okcoin.domain;
 
 import com.kidylee.coach.domain.Market;
 
