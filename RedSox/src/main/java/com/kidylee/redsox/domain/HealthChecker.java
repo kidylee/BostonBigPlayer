@@ -4,10 +4,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.google.common.eventbus.EventBus;
 import com.kidylee.coach.domain.Market;
 
+@Component
 public class HealthChecker implements Runnable {
 
 	@Autowired
@@ -18,7 +20,6 @@ public class HealthChecker implements Runnable {
 
 	public boolean running = true;
 
-	final static HealthChecker checker = getInstance();
 	public final long THRESHOLD = 7 * 1000L; // 5 seconds
 	public final long HEART_BEAT_PRIOD = 3 * 1000; // 3 seconds
 
@@ -31,10 +32,7 @@ public class HealthChecker implements Runnable {
 		lastFineReports.put(market, Long.valueOf(System.currentTimeMillis()));
 	}
 
-	private HealthChecker() {
-
-	}
-
+	
 	@Override
 	public void run() {
 		while (running) {
@@ -53,8 +51,10 @@ public class HealthChecker implements Runnable {
 			long now = System.currentTimeMillis();
 			for (MarketConnection conn : connectionManager.getActiveConnections()) {
 
-				if (now - lastFineReports.get(conn.getMarket()) > THRESHOLD)
+				if (now - lastFineReports.get(conn.getMarket()) > THRESHOLD){
 					connectionManagerEventBus.post(conn);
+					continue;
+				}
 				conn.heartBeat();
 			}
 
@@ -62,37 +62,9 @@ public class HealthChecker implements Runnable {
 
 	}
 
-	public static HealthChecker getInstance() {
-		if (checker == null)
-			return new HealthChecker();
+	
 
-		return checker;
 
-	}
-
-	/**
-	 * Used by whatchdog to know whether everything is OK.
-	 */
-	public boolean isEverythingOK() {
-		Long[] timestamps = lastFineReports.values().toArray(new Long[lastFineReports.size()]);
-
-		long now = System.currentTimeMillis();
-		for (Long t : timestamps)
-			if (now - t.longValue() > THRESHOLD)
-				return false;
-
-		return true;
-	}
-
-	public void check(MarketConnection conn) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void protect(ConnectionManager connectionManager) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void start() {
 		new Thread(this).start();

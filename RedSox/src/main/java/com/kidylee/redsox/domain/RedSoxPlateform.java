@@ -18,12 +18,6 @@ public class RedSoxPlateform {
 		connectionManagerEventBus.register(connectionManager);
 		connectionManager.startAll();
 		checker.start();
-
-		// TODO externalize configuration
-		// TODO start websocket
-		// TODO handle websocket exception and start rest
-		// TODO regular check webcoket available
-		// TODO reconnect websocket
 	}
 
 	@Subscribe

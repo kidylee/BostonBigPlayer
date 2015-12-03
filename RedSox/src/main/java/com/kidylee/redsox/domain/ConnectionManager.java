@@ -1,5 +1,6 @@
 package com.kidylee.redsox.domain;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,9 +72,9 @@ public class ConnectionManager {
 		}
 	}
 
-	public List<MarketConnection> getActiveConnections() {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<MarketConnection> getActiveConnections() {
+		
+		return marketConnectionMap.values();
 	}
 
 	public void stopAll() {
