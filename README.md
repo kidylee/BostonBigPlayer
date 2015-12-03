@@ -1,7 +1,7 @@
 #Boston Big Player - 波士顿高玩
 [![Build Status](https://travis-ci.org/kidylee/BostonBigPlayer.svg?branch=master)](https://travis-ci.org/kidylee/BostonBigPlayer) [![Codacy Badge](https://api.codacy.com/project/badge/grade/42a0d576c0dd4243ad425560246c95bd)](https://www.codacy.com/app/kidylee/BostonBigPlayer) 
 
-Boston Big Player is a strategy trading system which makes money when you are laying on the bed. 
+Boston Big Player is a strategy trading system which makes money when you are laying on the bed. <img src="http://emojipedia-us.s3.amazonaws.com/cache/82/93/82931f445fd564732e1ad09208b85e8a.png" width="20">
 
 ##Components:
 <img src="http://content.sportslogos.net/logos/7/151/full/y71myf8mlwlk8lbgagh3fd5e0.gif" width="64">
