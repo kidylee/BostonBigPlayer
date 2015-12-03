@@ -1,9 +1,9 @@
 package com.kidylee.redsox.okcoin.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,10 +13,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.kidylee.redsox.domain.Tick;
 
-@Entity
+
 @Generated("org.jsonschema2pojo")
-public class FutureTicker {
+public class FutureTicker extends Tick implements OKCoinData{
 
 	@Id
 //	@SequenceGenerator(name = "future_ticker_seq", sequenceName = "future_ticker_seq", allocationSize = 1)
@@ -35,7 +36,7 @@ public class FutureTicker {
 	public Double high;
 	@SerializedName("last")
 	@Expose
-	public Double last;
+	public BigDecimal price;
 	@SerializedName("low")
 	@Expose
 	public Double low;
@@ -47,7 +48,7 @@ public class FutureTicker {
 	public Integer unitAmount;
 	@SerializedName("vol")
 	@Expose
-	public Double volume;
+	public BigDecimal volume;
 
 	public Date createAt = new Date();
 	

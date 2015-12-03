@@ -8,11 +8,11 @@ import com.google.common.eventbus.EventBus;
 @Configuration
 public class RedSoxConfiguration {
 
-	final static EventBus connectionManagerEventBus = new EventBus();
+	final static EventBus marketConnectionManagerEventBus = new EventBus();
 
 	@Bean
-	public EventBus getConnectionManagerEventBus() {
-		return connectionManagerEventBus;
+	public EventBus getMarketConnectionManagerEventBus() {
+		return marketConnectionManagerEventBus;
 	}
 
 }

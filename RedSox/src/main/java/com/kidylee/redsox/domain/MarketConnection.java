@@ -1,23 +1,27 @@
 package com.kidylee.redsox.domain;
 
-import com.kidylee.coach.domain.Market;
+import java.io.IOException;
+
+import com.neovisionaries.ws.client.WebSocketException;
 
 public interface MarketConnection {
 
 	MarketConnection startWebSocket();
 
-	MarketConnection subscribe();
-
 	MarketConnection registerListener();
-
-	MarketConnection connection();
 
 	void startRest();
 
-	Market getMarket();
+	public Market getMarket();
 
 	void disconnectWebsocket();
 
 	void heartBeat();
+
+	void restartWebSocket() throws WebSocketException, IOException;
+
+	MarketConnection createWebSocket() throws IOException;
+
+	void stopRest();
 
 }

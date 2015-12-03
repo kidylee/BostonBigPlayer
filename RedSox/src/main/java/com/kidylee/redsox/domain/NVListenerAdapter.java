@@ -15,19 +15,19 @@ import com.neovisionaries.ws.client.WebSocketFrame;
 import com.neovisionaries.ws.client.WebSocketListener;
 import com.neovisionaries.ws.client.WebSocketState;
 
-public abstract class BaseListener implements WebSocketListener{
+public abstract class NVListenerAdapter implements WebSocketListener{
 
 	long lastUpdate = System.currentTimeMillis();
 	
 	private MarketConnection conn;
 	
 	@Autowired
-	private EventBus connectionManagerEventBus;
+	private EventBus marketConnectionManagerEventBus;
 	
 	@Autowired
 	HealthChecker checker;
 
-	public BaseListener(MarketConnection conn) {
+	public NVListenerAdapter(MarketConnection conn) {
 		this.conn = conn;
 	}
 
@@ -37,7 +37,7 @@ public abstract class BaseListener implements WebSocketListener{
 	}
 
 	private void onException() {
-		connectionManagerEventBus.post(conn);
+		marketConnectionManagerEventBus.post(conn);
 	}
 	
 
@@ -62,7 +62,7 @@ public abstract class BaseListener implements WebSocketListener{
 	@Override
 	public void onConnectError(WebSocket websocket, WebSocketException cause) throws Exception {
 		log.error("Websocket onConnectError ", cause);
-		onException();
+		
 		
 	}
 
@@ -150,7 +150,7 @@ public abstract class BaseListener implements WebSocketListener{
 	@Override
 	public void onFrameError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 
@@ -158,35 +158,35 @@ public abstract class BaseListener implements WebSocketListener{
 	public void onMessageError(WebSocket websocket, WebSocketException cause, List<WebSocketFrame> frames)
 			throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 
 	@Override
 	public void onTextMessageError(WebSocket websocket, WebSocketException cause, byte[] data) throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 
 	@Override
 	public void onSendError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 
 	@Override
 	public void onUnexpectedError(WebSocket websocket, WebSocketException cause) throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 
 	@Override
 	public void handleCallbackError(WebSocket websocket, Throwable cause) throws Exception {
 		log.error("Websocket get error: ", cause);
-		onException();
+		
 		
 	}
 

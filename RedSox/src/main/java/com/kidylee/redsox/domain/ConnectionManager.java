@@ -1,7 +1,7 @@
 package com.kidylee.redsox.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,32 +9,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.eventbus.Subscribe;
-import com.kidylee.coach.domain.Market;
-import com.kidylee.util.ConfigUtils;
+import com.kidylee.redsox.util.PropertiesUtils;
 
 public class ConnectionManager {
 
 	private static final Logger log = LoggerFactory.getLogger(ConnectionManager.class);
-	Map<Market, MarketConnection> marketConnectionMap = new HashMap<>();
+	List<Market> markets = new ArrayList<>();
 
 	public ConnectionManager() {
-		List<Market> markets = ConfigUtils.getMarkets();
+		markets = PropertiesUtils.getMarkets();
 
-		markets.forEach(
-				m -> this.marketConnectionMap.computeIfAbsent(m, k -> MarketConnectionFactory.getConnection(k)));
 	}
 
 	public void startAll() {
 		log.info("Starting market data....");
-		for (Map.Entry<Market, MarketConnection> e : marketConnectionMap.entrySet()) {
+		for (Market market : markets) {
 			boolean useRest = false;
-			MarketConnection conn = e.getValue();
+			MarketConnection conn = market.getMarketConnection();
 			try {
-				log.info("Starting {}.", conn.getMarket());
+				log.info("Starting {}.", market);
 
-				conn.subscribe().registerListener().startWebSocket();
+				conn.createWebSocket().registerListener().startWebSocket();
 
-				log.info("{} started.", conn.getMarket());
+				log.info("{} started.", market);
 
 			} catch (Exception ex) {
 				log.warn("Websocket faile to connect to market: {}. See the detail {}", conn.getMarket(), ex);
@@ -60,7 +57,7 @@ public class ConnectionManager {
 		boolean useRest = false;
 		conn.disconnectWebsocket();
 		try {
-			conn.startWebSocket();
+			conn.restartWebSocket();
 		} catch (Exception ex) {
 			log.warn("Websocket faile to connect to market: {}. See the detail {}", conn.getMarket(), ex);
 			useRest = true;
@@ -72,14 +69,25 @@ public class ConnectionManager {
 		}
 	}
 
-	public Collection<MarketConnection> getActiveConnections() {
-		
-		return marketConnectionMap.values();
-	}
-
 	public void stopAll() {
-		// TODO Auto-generated method stub
-		
+		log.info("Stopping market data....");
+		for (Market market : markets) {
+
+			MarketConnection conn = market.getMarketConnection();
+			try {
+				log.info("Stopping {}.", market);
+
+				conn.disconnectWebsocket();
+				conn.stopRest();
+				log.info("{} stopped.", market);
+
+			} catch (Exception ex) {
+				log.warn("Websocket faile to disconnect, market: {}. See the detail {}", conn.getMarket(), ex);
+
+			}
+
+		}
+
 	}
 
 }

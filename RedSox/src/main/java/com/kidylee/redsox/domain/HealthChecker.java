@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.eventbus.EventBus;
-import com.kidylee.coach.domain.Market;
 
 @Component
 public class HealthChecker implements Runnable {
@@ -49,13 +48,13 @@ public class HealthChecker implements Runnable {
 			}
 
 			long now = System.currentTimeMillis();
-			for (MarketConnection conn : connectionManager.getActiveConnections()) {
+			for (Market market : lastFineReports.keySet()) {
 
-				if (now - lastFineReports.get(conn.getMarket()) > THRESHOLD){
-					connectionManagerEventBus.post(conn);
+				if (now - lastFineReports.get(market) > THRESHOLD){
+					connectionManagerEventBus.post(market.getMarketConnection());
 					continue;
 				}
-				conn.heartBeat();
+				market.getMarketConnection();
 			}
 
 		}

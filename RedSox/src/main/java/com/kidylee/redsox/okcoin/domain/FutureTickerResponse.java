@@ -11,7 +11,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class FutureTickerResponse {
+public class FutureTickerResponse implements OKCoinResponse {
 
 	@SerializedName("channel")
 	@Expose
@@ -29,16 +29,25 @@ public class FutureTickerResponse {
 	}
 
 	private static Gson gson = new Gson();
-	
-	static public FutureTickerResponse toFutureTickerResponse(JsonElement okcoinResponse){
-		
-		
-	    return gson.fromJson(okcoinResponse, FutureTickerResponse.class);
-		
+
+	static public FutureTickerResponse toFutureTickerResponse(String response) {
+
+		return gson.fromJson(response, FutureTickerResponse.class);
+
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
+	}
+
+	@Override
+	public Channel getChannel() {
+		return channel;
+	}
+
+	@Override
+	public OKCoinData getData() {
+		return futureTicker;
 	}
 }

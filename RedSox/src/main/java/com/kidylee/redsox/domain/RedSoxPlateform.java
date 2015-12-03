@@ -11,11 +11,11 @@ public class RedSoxPlateform {
 	private HealthChecker checker;
 
 	@Autowired
-	private EventBus connectionManagerEventBus;
+	private EventBus marketConnectionManagerEventBus;
 
 	public void start() {
 
-		connectionManagerEventBus.register(connectionManager);
+		marketConnectionManagerEventBus.register(connectionManager);
 		connectionManager.startAll();
 		checker.start();
 	}
