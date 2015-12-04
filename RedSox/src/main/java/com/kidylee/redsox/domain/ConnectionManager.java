@@ -1,9 +1,7 @@
 package com.kidylee.redsox.domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +47,7 @@ public class ConnectionManager {
 	}
 
 	private void retryWebSocket(MarketConnection conn) {
-		// TODO retry websocket
+		// TODO incremental delay retry 
 	}
 
 	@Subscribe

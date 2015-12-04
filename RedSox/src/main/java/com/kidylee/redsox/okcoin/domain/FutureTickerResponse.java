@@ -30,7 +30,7 @@ public class FutureTickerResponse implements OKCoinResponse {
 
 	private static Gson gson = new Gson();
 
-	static public FutureTickerResponse toFutureTickerResponse(String response) {
+	static public FutureTickerResponse toFutureTickerResponse(JsonElement response) {
 
 		return gson.fromJson(response, FutureTickerResponse.class);
 
