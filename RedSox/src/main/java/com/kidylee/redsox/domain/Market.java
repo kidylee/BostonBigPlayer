@@ -1,7 +1,10 @@
 package com.kidylee.redsox.domain;
 
-public interface Market {
-	
-	public MarketConnection getMarketConnection();
+public class Market {
+
+	public MarketConnection getMarketConnection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

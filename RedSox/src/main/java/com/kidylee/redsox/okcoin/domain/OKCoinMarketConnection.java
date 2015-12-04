@@ -27,9 +27,9 @@ class OKCoinMarketConnection implements MarketConnection {
 
 	private Market market;
 
-	@Autowired
-	public OKCoinMarketConnection() {
-		this.market = new OKCoin();
+	
+	public OKCoinMarketConnection(Market market) {
+		this.market = market;
 
 	}
 

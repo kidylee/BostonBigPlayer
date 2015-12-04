@@ -17,5 +17,7 @@ public class Asset {
 	private AssetType assetType;
 	
 	@ManyToOne
-	private Long makret_id;
+	private Market market;
+	
+	
 }

@@ -30,5 +30,8 @@ Boston Big Player is a strategy trading system which makes money when you are la
  - [ ] Metrics measurement
  - [ ] Health checking
  - [ ] Hubot integration
+ - [ ] Script all. 
+ 	- [ ] Init/Reset DB.
+ 	- [ ] Start/Stop/Restart
 
 
