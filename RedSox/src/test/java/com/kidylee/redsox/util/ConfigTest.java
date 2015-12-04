@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.google.gson.Gson;
 import com.kidylee.redsox.okcoin.config.OKCoinConfig;
-import com.kidylee.redsox.okcoin.domain.Channel;
+import com.kidylee.redsox.okcoin.domain.OKCoinChannel;
 import com.kidylee.redsox.okcoin.domain.OKCoinRequest;
 
 public class ConfigTest {
@@ -27,7 +27,7 @@ public class ConfigTest {
 	public void testChangeToRequest() {
 		OKCoinConfig config = ConfigFactory.create(OKCoinConfig.class);
 		List<OKCoinRequest> requests = new ArrayList<>();
-		for (Channel channel : config.channels()) {
+		for (OKCoinChannel channel : config.channels()) {
 			requests.add(new OKCoinRequest(channel));
 		}
 		Gson gson = new Gson();

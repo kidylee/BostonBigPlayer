@@ -21,6 +21,10 @@ public class Tick {
 	public BigDecimal price;
 
 	public BigDecimal volume;
+	
+	public BigDecimal buy;
+	
+	public BigDecimal sell;
 
 	@ManyToOne
 	public Long assetId;

@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.eventbus.EventBus;
-import com.kidylee.redsox.okcoin.repository.FutureTickerRepository;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketException;
 import com.neovisionaries.ws.client.WebSocketFrame;
@@ -31,6 +30,7 @@ public abstract class NVListenerAdapter implements WebSocketListener{
 		this.conn = conn;
 	}
 
+	//TODO annotated
 	public void onHeartBeat() {
 		checker.iAmFine(conn.getMarket());
 		
@@ -41,8 +41,7 @@ public abstract class NVListenerAdapter implements WebSocketListener{
 	}
 	
 
-	@Autowired
-	FutureTickerRepository repostory;
+	
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	

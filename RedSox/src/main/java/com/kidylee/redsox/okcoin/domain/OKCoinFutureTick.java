@@ -16,14 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.kidylee.redsox.domain.Tick;
 
 
-@Generated("org.jsonschema2pojo")
-public class FutureTicker extends Tick implements OKCoinData{
 
-	@Id
-//	@SequenceGenerator(name = "future_ticker_seq", sequenceName = "future_ticker_seq", allocationSize = 1)
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "webuser_idwebuser_seq")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class OKCoinFutureTick {
+
 
 	@SerializedName("buy")
 	@Expose
@@ -50,12 +45,14 @@ public class FutureTicker extends Tick implements OKCoinData{
 	@Expose
 	public BigDecimal volume;
 
-	public Date createAt = new Date();
+	
 	
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
 	}
+
+	
 
 
 

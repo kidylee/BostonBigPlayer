@@ -28,8 +28,8 @@ class OKCoinMarketConnection implements MarketConnection {
 	private Market market;
 
 	@Autowired
-	public OKCoinMarketConnection(OKCoin market) {
-		this.market = market;
+	public OKCoinMarketConnection() {
+		this.market = new OKCoin();
 
 	}
 
@@ -43,7 +43,7 @@ class OKCoinMarketConnection implements MarketConnection {
 
 	private MarketConnection subscribe() {
 		List<OKCoinRequest> requests = new ArrayList<>();
-		for (Channel channel : config.channels()) {
+		for (OKCoinChannel channel : config.channels()) {
 			requests.add(new OKCoinRequest(channel));
 		}
 		Gson gson = new Gson();

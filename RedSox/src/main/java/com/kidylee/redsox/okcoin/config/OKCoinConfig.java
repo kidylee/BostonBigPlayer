@@ -5,7 +5,7 @@ import java.util.List;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
-import com.kidylee.redsox.okcoin.domain.Channel;
+import com.kidylee.redsox.okcoin.domain.OKCoinChannel;
 
 @Sources("classpath:config/Application-RedSox.properties")
 public interface OKCoinConfig extends Config {
@@ -17,6 +17,6 @@ public interface OKCoinConfig extends Config {
 	String heartbeat();
 	
 	@Key("market.okcoin.channels")
-	List<Channel> channels();
+	List<OKCoinChannel> channels();
 
 }
